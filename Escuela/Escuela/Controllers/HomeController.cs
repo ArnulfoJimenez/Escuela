@@ -25,14 +25,20 @@ namespace Escuela.Controllers
         {
             Course course = new Course();
 
-            course.Title = "Poo";
+            course.Title = "Update";
             course.Credits = 100;
             icourse.Insertar(course);
-                
+
 
             return View();
         }
 
+        public IActionResult GetAll()
+        {
+            var DandoFormaJson = icourse.ListarCursos();
+
+            return Json(new { data = DandoFormaJson });
+        }
         public IActionResult Privacy()
         {
             return View();

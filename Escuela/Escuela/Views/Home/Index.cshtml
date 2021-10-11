@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -6,3 +7,36 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+
+<table id="Mi Tabla" class="table table-dark table-striped">
+    <thead>
+        <tr>
+            <th>
+                CourseId
+            </th>
+            <th>
+                Tittle
+            </th>
+            <th>
+                Credits
+            </th>
+        </tr>
+
+    </thead>
+   
+
+</table>
+@section scrips{
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script>
+
+    $(document).ready(Function() {
+
+        var tabla = $('Mi Tabla').DataTable
+        {
+
+        }
+        }
+</script>
+ }

@@ -9,9 +9,15 @@ namespace Escuela.Servicio
     public interface ICourse
     {
 
-        void Insertar (Course c)
-        {
+        void Insertar(Course c);
 
-        }
+        void Delete(Course c);
+
+        void Buscar(Course c);
+
+        List<Course> ListarCursos();
+
+
+
     }
 }
