@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Escuela.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210930172536_Migrations")]
-    partial class Migrations
+    [Migration("20211015171527_Migracion")]
+    partial class Migracion
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -88,7 +88,7 @@ namespace Escuela.Migrations
             modelBuilder.Entity("Escuela.Dominio.Enrollment", b =>
                 {
                     b.HasOne("Escuela.Dominio.Course", "Course")
-                        .WithMany()
+                        .WithMany("Enrollments")
                         .HasForeignKey("CourseID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -102,6 +102,11 @@ namespace Escuela.Migrations
                     b.Navigation("Course");
 
                     b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("Escuela.Dominio.Course", b =>
+                {
+                    b.Navigation("Enrollments");
                 });
 
             modelBuilder.Entity("Escuela.Dominio.Student", b =>

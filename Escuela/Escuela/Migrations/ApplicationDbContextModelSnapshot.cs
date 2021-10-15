@@ -86,7 +86,7 @@ namespace Escuela.Migrations
             modelBuilder.Entity("Escuela.Dominio.Enrollment", b =>
                 {
                     b.HasOne("Escuela.Dominio.Course", "Course")
-                        .WithMany()
+                        .WithMany("Enrollments")
                         .HasForeignKey("CourseID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -100,6 +100,11 @@ namespace Escuela.Migrations
                     b.Navigation("Course");
 
                     b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("Escuela.Dominio.Course", b =>
+                {
+                    b.Navigation("Enrollments");
                 });
 
             modelBuilder.Entity("Escuela.Dominio.Student", b =>

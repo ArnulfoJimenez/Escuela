@@ -23,14 +23,14 @@ namespace Escuela.Controllers
 
         public IActionResult Index()
         {
-            for (int i = 0; i <= 100; i++)
-            {
+            //for (int i = 0; i <= 100; i++)
+            //{
                 Course course = new Course();
 
                 course.Title = "Update";
                 course.Credits = 100;
                 icourse.Insertar(course);
-            }
+            
 
             return View();
         }
