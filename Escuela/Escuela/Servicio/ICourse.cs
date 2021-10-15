@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Escuela.Servicio
 {
-    public interface ICourse
+    public interface ICourses
     {
 
         void Insertar(Course c);
@@ -15,7 +15,7 @@ namespace Escuela.Servicio
 
         void Buscar(Course c);
 
-        List<Course> ListarCursos();
+        ICollection<Course>ListarCursos();
 
 
 

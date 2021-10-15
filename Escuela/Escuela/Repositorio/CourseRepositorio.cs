@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Escuela.Repositorio
 {
-    public class CourseRepositorio : ICourse
+    public class CourseRepositorio : ICourses
     {
         private ApplicationDbContext app;
 
@@ -33,9 +33,10 @@ namespace Escuela.Repositorio
             app.SaveChanges();
         }
 
-        public List<Course> ListarCursos()
+        public ICollection<Course> ListarCursos()
         {
             return app.Courses.ToList();
         }
+
     }
 }

@@ -14,8 +14,8 @@ namespace Escuela.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private ICourse icourse;
-        public HomeController(ILogger<HomeController> logger, ICourse icourse)
+        private ICourses icourse;
+        public HomeController(ILogger<HomeController> logger, ICourses icourse)
         {
             this.icourse = icourse;
             _logger = logger;
@@ -23,22 +23,25 @@ namespace Escuela.Controllers
 
         public IActionResult Index()
         {
-            Course course = new Course();
+            for (int i = 0; i <= 100; i++)
+            {
+                Course course = new Course();
 
-            course.Title = "Update";
-            course.Credits = 100;
-            icourse.Insertar(course);
-
+                course.Title = "Update";
+                course.Credits = 100;
+                icourse.Insertar(course);
+            }
 
             return View();
         }
 
         public IActionResult GetAll()
         {
-            var DandoFormaJson = icourse.ListarCursos();
+            var DandoFormatoJson = icourse.ListarCursos();
 
-            return Json(new { data = DandoFormaJson });
+            return Json(new { data = DandoFormatoJson });
         }
+
         public IActionResult Privacy()
         {
             return View();

@@ -24,19 +24,26 @@
         </tr>
 
     </thead>
-   
+
 
 </table>
-@section scrips{
-<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-<script>
+@section scripts{
 
-    $(document).ready(Function() {
-
-        var tabla = $('Mi Tabla').DataTable
-        {
-
-        }
-        }
-</script>
- }
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var tabla = $('#Mitabla').DataTable({
+                "ajax": {
+                    "url": '/Home/GetAll',
+                    "type": "get",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "couserId", "name": "couserId", "autoWidth": true },
+                    { "data": "title", "name": "title", "autoWidth": true },
+                    { "data": "credits", "name": "credits", "autoWidth": true }
+                ]
+            });
+        });
+    </script>
+}
