@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Escuela.Dominio.Enrollment>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -13,21 +13,39 @@
     <thead>
         <tr>
             <th>
-                CourseId
+                Id Enrollment
             </th>
             <th>
-                Tittle
+                Student ID
             </th>
             <th>
-                Credits
+                LastName
+            </th>
+            <th>
+                FirstMidName
             </th>
         </tr>
 
     </thead>
+    <tbody>
+
+        @foreach (var iteracion in Model)
+        {
+
+            <tr>
+                <td>@iteracion.EnrollmentID</td>
+                <td>@iteracion.StudentID</td>
+                <td>@iteracion.LastName</td>
+                <td>@iteracion.FirstMidName</td>
+
+            </tr>
+        }
+    </tbody>
+
 
 
 </table>
-@section scripts{
+@*@section scripts{
 
     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <script>
@@ -39,11 +57,11 @@
                     "datatype": "json"
                 },
                 "columns": [
-                    { "data": "courserID", "name": "couserId", "autoWidth": true },
+                    { "data": "courseID", "name": "courseID", "autoWidth": true },
                     { "data": "title", "name": "title", "autoWidth": true },
                     { "data": "credits", "name": "credits", "autoWidth": true }
                 ]
             });
         });
     </script>
-}
+}*@

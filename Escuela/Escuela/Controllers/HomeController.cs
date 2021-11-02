@@ -15,9 +15,12 @@ namespace Escuela.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private ICourses icourse;
-        public HomeController(ILogger<HomeController> logger, ICourses icourse)
+        private IRollmennts irollmennts;
+        public HomeController(ILogger<HomeController> logger, ICourses icourse,
+            IRollmennts irollmennts)
         {
             this.icourse = icourse;
+            this.irollmennts = irollmennts;
             _logger = logger;
         }
 
@@ -25,14 +28,9 @@ namespace Escuela.Controllers
         {
             //for (int i = 0; i <= 100; i++)
             //{
-                Course course = new Course();
+            var listado = irollmennts.UnionDeTablas();
 
-                course.Title = "Update";
-                course.Credits = 100;
-                icourse.Insertar(course);
-            
-
-            return View();
+            return View(listado);
         }
 
         public IActionResult GetAll()
