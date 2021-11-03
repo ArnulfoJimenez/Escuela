@@ -1,11 +1,10 @@
 ﻿@model List<Escuela.Dominio.Enrollment>
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Union";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 style="color:aquamarine" class="display-4">Union de Tablas</h1>
 </div>
 
 
@@ -24,6 +23,9 @@
             <th>
                 FirstMidName
             </th>
+            <th>
+                Curso al que pertenecen los estudiantes
+            </th>
         </tr>
 
     </thead>
@@ -37,6 +39,7 @@
                 <td>@iteracion.StudentID</td>
                 <td>@iteracion.Student.LastName</td>
                 <td>@iteracion.Student.FirstMidName</td>
+                <td>@iteracion.Course.Title</td>
 
             </tr>
         }
@@ -45,23 +48,13 @@
 
 
 </table>
-@*@section scripts{
+
+@section scripts{
 
     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <script>
-        $(document).ready(function () {
-            var tabla = $('#Mitabla').DataTable({
-                "ajax": {
-                    "url": '/Home/GetAll',
-                    "type": "get",
-                    "datatype": "json"
-                },
-                "columns": [
-                    { "data": "courseID", "name": "courseID", "autoWidth": true },
-                    { "data": "title", "name": "title", "autoWidth": true },
-                    { "data": "credits", "name": "credits", "autoWidth": true }
-                ]
-            });
+    $(document).ready(function () {
+        var tabla = $('#Mitabla').DataTable({
         });
     </script>
-}*@
+}

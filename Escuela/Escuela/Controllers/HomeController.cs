@@ -2,6 +2,7 @@
 using Escuela.Models;
 using Escuela.Servicio;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -38,6 +39,39 @@ namespace Escuela.Controllers
             var DandoFormatoJson = icourse.ListarCursos();
 
             return Json(new { data = DandoFormatoJson });
+        }
+
+        public IActionResult Union()
+        {
+            var listado = irollmennts.UnionDeTablas();
+
+            return View(listado);
+        }
+
+        public IActionResult ComboBox()
+        {
+
+            var infromationOftheCombo = icourse.ListarCursos();
+            List<SelectListItem> lista = new List<SelectListItem>();
+
+            foreach(var iterarinformation in infromationOftheCombo)
+            {
+                lista.Add(
+                    new SelectListItem
+                    {
+                        Text = iterarinformation.Title,
+                        Value = Convert.ToString(iterarinformation.CourseID)
+
+
+                    }
+                    );
+
+                ViewBag.Estado = lista;
+            }
+
+
+
+            return View();
         }
 
         public IActionResult Privacy()
