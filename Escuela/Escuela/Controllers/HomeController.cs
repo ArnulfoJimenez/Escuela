@@ -48,6 +48,22 @@ namespace Escuela.Controllers
             return View(listado);
         }
 
+        public IActionResult GetAllForJoinJsonLinq()
+        {
+
+            var listado = irollmennts.UnionDeTablas();
+
+            var Combinaciondearreglos = (from union in listado
+                                         select new
+                                         {
+                                             union.Course.Title,
+                                             union.Student.LastName,
+                                             union.Student.FirstMidName,
+                                             union.Grade
+                                         }).ToList();
+
+            return Json (new { Combinaciondearreglos});
+        }
         public IActionResult ComboBox()
         {
 
