@@ -33,6 +33,7 @@ namespace Escuela
 
             services.AddTransient<ICourses, CourseRepositorio>();
             services.AddTransient<IRollmennts, EnrollmentRepository>();
+            services.AddTransient<IStudent, StudentRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

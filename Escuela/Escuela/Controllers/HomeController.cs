@@ -17,11 +17,13 @@ namespace Escuela.Controllers
         private readonly ILogger<HomeController> _logger;
         private ICourses icourse;
         private IRollmennts irollmennts;
+        private IStudent istudent;
         public HomeController(ILogger<HomeController> logger, ICourses icourse,
-            IRollmennts irollmennts)
+            IRollmennts irollmennts, IStudent istudent)
         {
             this.icourse = icourse;
             this.irollmennts = irollmennts;
+            this.istudent = istudent;
             _logger = logger;
         }
 
@@ -68,11 +70,14 @@ namespace Escuela.Controllers
         {
 
             var infromationOftheCombo = icourse.ListarCursos();
-            List<SelectListItem> lista = new List<SelectListItem>();
+            var infromationOftheComboforStudents = istudent.ListOfStudent();
 
-            foreach(var iterarinformation in infromationOftheCombo)
+            List<SelectListItem> listcourse = new List<SelectListItem>();
+            List<SelectListItem> liststudent = new List<SelectListItem>();
+
+            foreach (var iterarinformation in infromationOftheCombo)
             {
-                lista.Add(
+                listcourse.Add(
                     new SelectListItem
                     {
                         Text = iterarinformation.Title,
@@ -82,14 +87,33 @@ namespace Escuela.Controllers
                     }
                     );
 
-                ViewBag.Estado = lista;
+                ViewBag.estadolistcourse = listcourse;
             }
 
+            foreach (var iterarinformation in infromationOftheComboforStudents)
+            {
+                liststudent.Add(
+                    new SelectListItem
+                    {
+                        Text = iterarinformation.FirstMidName,
+                        Value = Convert.ToString(iterarinformation.StudentID)
+
+
+                    }
+                    );
+
+                ViewBag.estadoliststudent = liststudent;
+            }
 
 
             return View();
         }
 
+        public IActionResult GetInformationComboBox(Enrollment e)
+        {
+
+            return View("ComboBox");
+        }
         public IActionResult Privacy()
         {
             return View();

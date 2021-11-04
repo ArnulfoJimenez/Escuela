@@ -33,7 +33,7 @@ namespace Escuela.Repositorio
             app.SaveChanges();
         }
 
-        public ICollection<Course> ListarCursos()
+        public List<Course> ListarCursos()
         {
             return app.Courses.ToList();
         }

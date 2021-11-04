@@ -15,7 +15,7 @@ namespace Escuela.Servicio
 
         void Buscar(Course c);
 
-        ICollection<Course>ListarCursos();
+        List<Course>ListarCursos();
 
 
 
