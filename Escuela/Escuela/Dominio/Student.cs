@@ -20,6 +20,6 @@ namespace Escuela.Dominio
 
         public DateTime EnrollmentsDate { get; set; }
 
-        public ICollection<Enrollment> Enrollment { get; set; }
+        public List<Enrollment> Enrollment { get; set; }
     }
 }

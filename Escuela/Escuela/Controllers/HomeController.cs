@@ -18,6 +18,7 @@ namespace Escuela.Controllers
         private ICourses icourse;
         private IRollmennts irollmennts;
         private IStudent istudent;
+
         public HomeController(ILogger<HomeController> logger, ICourses icourse,
             IRollmennts irollmennts, IStudent istudent)
         {
@@ -25,6 +26,7 @@ namespace Escuela.Controllers
             this.irollmennts = irollmennts;
             this.istudent = istudent;
             _logger = logger;
+            
         }
 
         public IActionResult Index()

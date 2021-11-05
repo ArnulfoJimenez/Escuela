@@ -1,9 +1,44 @@
-﻿@{
+﻿@model List<Escuela.Dominio.Enrollment>
+@{
     ViewData["Title"] = "Course";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Cursos</h1>
-    
+<div class="text-left">
+    <h1 class="display-4">Lista de Cursos</h1>
+
 </div>
 
+<table id="Mitabla" class="table table-dark table-striped">
+    <thead>
+        <tr>
+            <th>
+                Id Course
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Credits
+            </th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var iteracion in Model)
+        {
+
+            <tr>
+                <td>@iteracion.CourseID</td>
+                <td>@iteracion.Course.Title</td>
+                <td>@iteracion.Course.Credits.ToString()</td>
+
+
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+<br />
+<br />
+<input type="submit" class="btn btn-outline-success animate__animated animate__backInDown" value="Agregar"> @Html.ActionLink("Guardado", "Guardar") />

@@ -3,7 +3,7 @@
     ViewData["Title"] = "Guardado";
 }
 
-<div class="text-center">
+<div class="text-left">
     <h1 style="color: cornflowerblue" class="animate__animated animate__jello">Registrar un curso</h1>
 </div>
 
@@ -20,15 +20,16 @@
 
 @using (Html.BeginForm("Guardar", "Course", FormMethod.Post))
 {
-
-    <i class="fas fa-user-circle"></i>
+ 
+    <i class="fas fa-ad"></i>
     <label style="color: cornflowerblue" class="animate__animated animate__backInDown">Title</label>
     <br />
     @Html.TextBoxFor(m => m.Title)
     @Html.ValidationMessageFor(m => m.Title)
     <br />
+    <br />
 
-    <i class="fas fa-user-plus"></i>
+    <i class="far fa-credit-card"></i>
     <label style="color: cornflowerblue" class="animate__animated animate__backInDown">Credits</label>
     <br />
     @Html.TextBoxFor(m => m.Credits)
@@ -36,7 +37,6 @@
     <br />
     <br />
     <br />
-    <input type="submit" class="btn btn-outline-success animate__animated animate__backInDown" value="GUARDAR" />
-
-
+    <input type="submit" class="btn btn-outline-success animate__animated animate__backInDown" value="Registrar" />
+    
 }

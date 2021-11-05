@@ -8,7 +8,6 @@ namespace Escuela.Servicio
 {
     public interface ICourses
     {
-
         void Insertar(Course c);
 
         //void Delete(Course c);

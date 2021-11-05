@@ -22,9 +22,9 @@ namespace Escuela.Dominio
 
 
         [Display(Name = "Credits")]
-        [Range(0, int.MaxValue, ErrorMessage = "Campo requerido")]
+        [Required(ErrorMessage = "Campo requerido")]
         public int Credits { get; set; }
 
-        public ICollection<Enrollment> Enrollments { get; set; }
+        public List<Enrollment> Enrollments { get; set; }
     }
 }

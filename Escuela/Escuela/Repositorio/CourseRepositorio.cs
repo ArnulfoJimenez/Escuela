@@ -17,10 +17,7 @@ namespace Escuela.Repositorio
             this.app = app; 
         }
 
-        public void Buscar(Course c)
-        {
-            app.Courses.Find(c);
-        }
+
 
         public void Delete(Course c)
         {
