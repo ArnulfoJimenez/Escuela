@@ -1,0 +1,42 @@
+﻿@model Escuela.Dominio.Course
+@{
+    ViewData["Title"] = "Guardado";
+}
+
+<div class="text-center">
+    <h1 style="color: cornflowerblue" class="animate__animated animate__jello">Registrar un curso</h1>
+</div>
+
+<link rel="stylesheet"
+      href="https://kit.fontawesome.com/ffd11ebe0f.js" crossorigin="anonymous" />
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js>" />
+
+<script src="https://kit.fontawesome.com/ffd11ebe0f.js" crossorigin="anonymous"></script>
+
+@using (Html.BeginForm("Guardar", "Course", FormMethod.Post))
+{
+
+    <i class="fas fa-user-circle"></i>
+    <label style="color: cornflowerblue" class="animate__animated animate__backInDown">Title</label>
+    <br />
+    @Html.TextBoxFor(m => m.Title)
+    @Html.ValidationMessageFor(m => m.Title)
+    <br />
+
+    <i class="fas fa-user-plus"></i>
+    <label style="color: cornflowerblue" class="animate__animated animate__backInDown">Credits</label>
+    <br />
+    @Html.TextBoxFor(m => m.Credits)
+    @Html.ValidationMessageFor(m => m.Credits)
+    <br />
+    <br />
+    <br />
+    <input type="submit" class="btn btn-outline-success animate__animated animate__backInDown" value="GUARDAR" />
+
+
+}
