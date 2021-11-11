@@ -32,16 +32,15 @@ namespace Escuela.Controllers
             _logger = logger;
         }
 
-        [HttpPost]
         public IActionResult Guardar(Course c)
         {
 
             if (ModelState.IsValid)
             {
                 icourse.Insertar(c);
-                ViewBag.message = "Se ha guardado";
+                
 
-                return View("Listado");
+                return View();
             }
             else
             {
