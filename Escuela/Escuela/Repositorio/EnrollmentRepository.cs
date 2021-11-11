@@ -18,11 +18,19 @@ namespace Escuela.Repositorio
             this.bd = bd;
         }
 
+        public void Guardar(Enrollment E)
+        {
+            bd.Add(E);
+            bd.SaveChanges();
+        }
+
         public List<Enrollment> UnionDeTablas()
         {
+
             var Union = bd.Enrollments.Include(e => e.Student).Include(c => c.Course).ToList();
 
             return Union;
+
         }
     }
 }

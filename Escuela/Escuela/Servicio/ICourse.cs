@@ -10,9 +10,11 @@ namespace Escuela.Servicio
     {
         void Insertar(Course c);
 
-        //void Delete(Course c);
+        void Actualizar(Course c);
 
-        //void Buscar(Course c);
+        void Delete(Course c);
+
+        void Buscar(Course c);
 
         List<Course>ListarCursos();
 

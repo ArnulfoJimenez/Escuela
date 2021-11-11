@@ -1,5 +1,52 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Escuela.Dominio.Student
 @{
+    ViewData["Title"] = "Agregar";
+}
+
+<div class="text-left">
+    <h1 style="color: cornflowerblue" class="animate__animated animate__jello">Registrar un estudiante</h1>
+</div>
+
+<link rel="stylesheet"
+      href="https://kit.fontawesome.com/ffd11ebe0f.js" crossorigin="anonymous" />
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js>" />
+
+<script src="https://kit.fontawesome.com/ffd11ebe0f.js" crossorigin="anonymous"></script>
+
+@using (Html.BeginForm("Agregar", "Student", FormMethod.Post))
+{
+
+    <i class="far fa-user"></i>
+    <label style="color: cornflowerblue" class="animate__animated animate__backInDown">LastName</label>
+    <br />
+    @Html.TextBoxFor(m => m.LastName)
+    @Html.ValidationMessageFor(m => m.LastName)
+    <br />
+    <br />
+
+    <i class="far fa-user-circle"></i>
+    <label style="color: cornflowerblue" class="animate__animated animate__backInDown">FirstMidName</label>
+    <br />
+    @Html.TextBoxFor(m => m.FirstMidName)
+    @Html.ValidationMessageFor(m => m.FirstMidName)
+    <br />
+    <br />
+    <i class="fas fa-calendar-day"></i>
+    <label style="color: cornflowerblue" class="animate__animated animate__backInDown">EnrollmentsDate</label>
+    <br />
+    @Html.TextBoxFor(m => m.EnrollmentsDate)
+    @Html.ValidationMessageFor(m => m.EnrollmentsDate)
+    <br />
+    <br />
+    <br />
+    <input type="submit" class="btn btn-outline-success animate__animated animate__backInDown" value="Registrar" />
+    <br />
+    <br />
+    <button type="submit" class="btn btn-outline-success animate__animated animate__backInDown">@Html.ActionLink("Volver", "Listado") </button>
+
 }

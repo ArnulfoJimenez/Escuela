@@ -19,9 +19,9 @@ namespace Escuela.Repositorio
 
 
 
-        public void Delete(Course c)
+        public void Actualizar(Course c)
         {
-            app.Courses.Remove(c);
+            app.Courses.Update(c);
         }
 
         public void Insertar (Course c)
@@ -30,6 +30,15 @@ namespace Escuela.Repositorio
             app.SaveChanges();
         }
 
+        public void Delete(Course c)
+        {
+            app.Remove(c);
+        }
+        public void Buscar (Course c)
+        {
+            app.Courses.Find();
+
+        }
         public List<Course> ListarCursos()
         {
             return app.Courses.ToList();

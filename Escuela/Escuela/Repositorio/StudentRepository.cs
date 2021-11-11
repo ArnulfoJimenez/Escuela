@@ -17,6 +17,11 @@ namespace Escuela.Repositorio
             this.app = app;
         }
 
+        public void Agregar(Student s)
+        {
+            app.Add(s);
+            app.SaveChanges();
+        }
         public List<Student> ListOfStudent()
         {
             return app.Student.ToList();

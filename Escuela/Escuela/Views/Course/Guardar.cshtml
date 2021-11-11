@@ -20,7 +20,7 @@
 
 @using (Html.BeginForm("Guardar", "Course", FormMethod.Post))
 {
- 
+
     <i class="fas fa-ad"></i>
     <label style="color: cornflowerblue" class="animate__animated animate__backInDown">Title</label>
     <br />
@@ -38,5 +38,8 @@
     <br />
     <br />
     <input type="submit" class="btn btn-outline-success animate__animated animate__backInDown" value="Registrar" />
-    
+    <br />
+    <br />
+    <button type="submit" class="btn btn-outline-success animate__animated animate__backInDown">@Html.ActionLink("Volver", "Listado") </button>
+
 }

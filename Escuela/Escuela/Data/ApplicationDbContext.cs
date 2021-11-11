@@ -13,10 +13,10 @@ namespace Escuela.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) { 
         }
-            protected ApplicationDbContext()
-            {
+        protected ApplicationDbContext()
+        {
 
-            }
+        }
         public DbSet<Student> Student { get; set; }
 
         public DbSet<Enrollment> Enrollments { get; set; }

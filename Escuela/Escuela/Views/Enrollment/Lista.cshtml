@@ -1,7 +1,76 @@
-﻿@{
+﻿@model List<Escuela.Dominio.Enrollment>
+@{
     ViewData["Title"] = "Enrollment";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Bienvenido</h1>
+    <h1 style="color: cornflowerblue" class="animate__animated animate__jello">BIENVENIDO</h1>
+    <link rel="stylesheet"
+          href="https://kit.fontawesome.com/ffd11ebe0f.js" crossorigin="anonymous" />
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js>" />
+
+    <script src="https://kit.fontawesome.com/ffd11ebe0f.js" crossorigin="anonymous"></script>
 </div>
+
+<table id="Mitabla" class="table table-warning table-striped">
+    <thead>
+        <tr>
+            <th>
+                Id Enrollment
+            </th>
+            <th>
+                Course ID
+            </th>
+            <th>
+                Student ID
+            </th>
+            <th>
+                Grade
+            </th>
+            <th>
+                Course
+            </th>
+            <th>
+                Student
+            </th>
+
+        </tr>
+
+    </thead>
+    <tbody>
+
+        @foreach (var iteracion in Model)
+        {
+
+            <tr>
+                <td>@iteracion.EnrollmentID</td>
+                <td>@iteracion.StudentID</td>
+                <td>@iteracion.CourseID</td>
+                <td>@iteracion.Grade</td>
+                <td>@iteracion.Course.Title</td>
+                <td>@iteracion.Student.LastName</td>
+
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+@section scripts{
+
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var tabla = $('#Mitabla').DataTable({
+            });
+    </script>
+}
+
+<br />
+<br />
+<button type="submit" class="btn btn-outline-success animate__animated animate__backInDown">@Html.ActionLink("Añadir", "Guardar")</button>

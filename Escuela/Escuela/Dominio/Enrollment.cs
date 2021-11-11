@@ -22,6 +22,9 @@ namespace Escuela.Dominio
 
         public int StudentID { get; set; }
 
+
+        [Display(Name = "Grade")]
+        [Required(ErrorMessage = "Valor no valido")]
         public Grade? Grade { get; set; }
 
         public Course Course { get; set; }

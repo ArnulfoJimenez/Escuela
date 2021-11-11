@@ -1,0 +1,63 @@
+﻿@model Escuela.Dominio.Enrollment
+@{
+
+    Layout = null;
+}
+
+<div class="text-left">
+    <h1 style="color: cornflowerblue" class="animate__animated animate__jello">Registrar</h1>
+</div>
+
+
+@using (Html.BeginForm("Guardar", "Enrollment", FormMethod.Post))
+{
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title style="color: cornflowerblue" class="animate__animated animate__jello">Registro</title>
+        <link rel="stylesheet"
+              href="https://kit.fontawesome.com/ffd11ebe0f.js" crossorigin="anonymous" />
+
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js>" />
+
+        <script src="https://kit.fontawesome.com/ffd11ebe0f.js" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    </head>
+    <body>
+        <i class="fas fa-graduation-cap"></i>
+        @Html.DropDownListFor(a => a.CourseID, new SelectList(ViewBag.estadolistcourse, "Value", "Text"), "Seleccionar un curso", new { @class = "form-control" })
+       
+        <br />
+        <br />
+        <br />
+        <i class="far fa-user-circle"></i>
+        @Html.DropDownListFor(a => a.StudentID, new SelectList(ViewBag.estadoliststudent, "Value", "Text"), "Seleccionar un estudiante", new { @class = "form-control" })
+        
+        <br />
+        <br />
+        <br />
+        <i class="fas fa-user-edit"></i>
+        <label style="color: cornflowerblue" class="animate__animated animate__backInDown">Grade</label>
+        <br />
+        @Html.TextBoxFor(m => m.Grade)
+        @Html.ValidationMessageFor(m => m.Grade)
+        <br />
+        <br />
+        <input type="submit" class="btn btn-outline-success animate__animated animate__backInDown" value="Registrar" />
+        <br />
+    </body>
+</html>
+
+}
+
+
+
+

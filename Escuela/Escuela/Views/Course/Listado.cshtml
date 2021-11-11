@@ -1,14 +1,15 @@
-﻿@model List<Escuela.Dominio.Enrollment>
+﻿@model List<Escuela.Dominio.Course>
 @{
     ViewData["Title"] = "Course";
 }
 
-<div class="text-left">
-    <h1 class="display-4">Lista de Cursos</h1>
+<div class="text-center">
+    <h1 style="color: cornflowerblue" class=" animate__animated animate__jello">LISTA DE CURSOS</h1>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
 </div>
 
-<table id="Mitabla" class="table table-dark table-striped">
+<table id="Mitabla" class="table table-warning table-striped">
     <thead>
         <tr>
             <th>
@@ -20,6 +21,9 @@
             <th>
                 Credits
             </th>
+            <th>
+                Accion
+            </th>
         </tr>
 
     </thead>
@@ -27,18 +31,41 @@
         @foreach (var iteracion in Model)
         {
 
-            <tr>
-                <td>@iteracion.CourseID</td>
-                <td>@iteracion.Course.Title</td>
-                <td>@iteracion.Course.Credits.ToString()</td>
+        <tr>
+            <td>@iteracion.CourseID</td>
+            <td>@iteracion.Title</td>
+            <td>@iteracion.Credits</td>
+            <td>@Html.ActionLink("Editar", "Guardar", new { id = iteracion.CourseID }, new { @class = "btn btn-danger" })</td>
+            @*<td>@Html.ActionLink("Borrar", "Eliminar", new { id = iteracion.CourseID }, new { @class = "btn btn-danger" })</td>*@
 
 
-            </tr>
+        </tr>
         }
 
     </tbody>
 </table>
 
+@section scripts{
+
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var tabla = $('#Mitabla').DataTable({
+                "ajax": {
+                    "url": '/Course/GetAll',
+                    "type": "get",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "courseID", "name": "courseID", "autoWidth": true },
+                    { "data": "title", "name": "title", "autoWidth": true },
+                    { "data": "credits", "name": "credits", "autoWidth": true }
+                ]
+            });
+        });
+    </script>
+}
+
 <br />
 <br />
-<input type="submit" class="btn btn-outline-success animate__animated animate__backInDown" value="Agregar"> @Html.ActionLink("Guardado", "Guardar") />
+<button type="submit" class="btn btn-outline-success animate__animated animate__backInDown">@Html.ActionLink("Agregar", "Guardar") </button>

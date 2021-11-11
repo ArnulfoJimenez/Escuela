@@ -1,8 +1,10 @@
-﻿using Escuela.Dominio;
+﻿using Escuela.Data;
+using Escuela.Dominio;
 using Escuela.Models;
 using Escuela.Servicio;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -17,26 +19,29 @@ namespace Escuela.Controllers
         public readonly ILogger<CourseController> _logger;
         private ICourses icourse;
         private IRollmennts irollmennts;
-        private IStudent istudent;
+        
+        
 
 
         public CourseController(ILogger<CourseController> logger, ICourses icourse, 
-            IRollmennts irollmennts, IStudent istudent)
+            IRollmennts irollmennts)
         {
             this.icourse = icourse;
             this.irollmennts = irollmennts;
-            this.istudent = istudent;
+            
             _logger = logger;
         }
 
+        [HttpPost]
         public IActionResult Guardar(Course c)
         {
 
             if (ModelState.IsValid)
             {
                 icourse.Insertar(c);
+                ViewBag.message = "Se ha guardado";
 
-                return View();
+                return View("Listado");
             }
             else
             {
@@ -44,29 +49,35 @@ namespace Escuela.Controllers
             }
 
         }
+        
+        //public IActionResult Eliminar(Course c)
+        //{
+        //    icourse.Delete(c);
+            
+            
+               
+           
+        //    return View();
+        //}
 
-        public IActionResult Listado()
+        public IActionResult Listado(Course c)
         {
+
+            var listado = icourse.ListarCursos();
+
+            return View(listado);
+
+        
+        }
+
+        public IActionResult Edit( Course c)
+        {
+            icourse.Actualizar(c);
+
             return View();
         }
 
-        //public IActionResult GetAllForJoinJsonLinq()
-        //{
-
-        //    var listado = irollmennts.UnionDeTablas();
-
-        //    var Combinaciondearreglos = (from union in listado
-        //                                 select new
-        //                                 {
-        //                                     union.Course.Title,
-        //                                     union.Student.LastName,
-        //                                     union.Student.FirstMidName,
-        //                                     union.Grade
-        //                                 }).ToList();
-
-        //    return Json(new { Combinaciondearreglos });
-        //}
-
+        
         public IActionResult GetAll()
         {
             var DandoFormatoJson = icourse.ListarCursos();
@@ -74,11 +85,7 @@ namespace Escuela.Controllers
             return Json(new { data = DandoFormatoJson });
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+       
     }
 
    

@@ -8,6 +8,10 @@ namespace Escuela.Servicio
 {
     public interface IRollmennts
     {
+
+        void Guardar(Enrollment E);
+
+
         List<Enrollment> UnionDeTablas();
 
     }

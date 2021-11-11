@@ -1,67 +1,13 @@
-﻿@model List<Escuela.Dominio.Enrollment>
+﻿
 @{
     ViewData["Title"] = "Home Page";
 }
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 style="color: cornflowerblue" class="animate__animated animate__jello">WELCOME TO APPLICATION</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
 
-<table id="Mitabla" class="table table-dark table-striped">
-    <thead>
-        <tr>
-            <th>
-                Id Enrollment
-            </th>
-            <th>
-                Student ID
-            </th>
-            <th>
-                LastName
-            </th>
-            <th>
-                FirstMidName
-            </th>
-        </tr>
-
-    </thead>
-    <tbody>
-
-        @foreach (var iteracion in Model)
-        {
-
-            <tr>
-                <td>@iteracion.EnrollmentID</td>
-                <td>@iteracion.StudentID</td>
-                <td>@iteracion.Student.LastName</td>
-                <td>@iteracion.Student.FirstMidName</td>
-
-            </tr>
-        }
-    </tbody>
-
-
-
-</table>
-@*@section scripts{
-
-    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            var tabla = $('#Mitabla').DataTable({
-                "ajax": {
-                    "url": '/Home/GetAll',
-                    "type": "get",
-                    "datatype": "json"
-                },
-                "columns": [
-                    { "data": "courseID", "name": "courseID", "autoWidth": true },
-                    { "data": "title", "name": "title", "autoWidth": true },
-                    { "data": "credits", "name": "credits", "autoWidth": true }
-                ]
-            });
-        });
-    </script>
-}*@

@@ -8,6 +8,8 @@ namespace Escuela.Servicio
 {
     public interface IStudent
     {
+
+        void Agregar(Student s);
         List<Student> ListOfStudent();
     }
 }
